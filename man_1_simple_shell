@@ -9,8 +9,8 @@ sodash\fR \- simple UNIX command interpreter
 .SH SYNOPSIS
 soda\fR [\fIfilename\fR]
 
-.SH COPYRIGHT
-soda is Copyright (C) 2022 by Ogwalu chidozie and Mubaraq Abuhasan
+
+
 
 .SH DESCRIPTION
 Soda\fR is a sh-compatible command language interpreter that executes commands read from the standard input or from a file.
@@ -94,5 +94,5 @@ The following builtin commands are supported:
 access(2), chdir(2), execve(2), _exit(2), exit(3), fflush(3), fork(2), free(3), isatty(3), getcwd(3), malloc(3), open(2), read(2), sh(1), signal(2), stat(2), wait(2), write(2)
 Sodash\fR takes basic functionality of the \fBsh\fR shell. This man page is based on the man page bash(1)
 
-.SH AUTHORS
-Ogwalu Chidozie and Mubaraq Abuhasan
+
+
