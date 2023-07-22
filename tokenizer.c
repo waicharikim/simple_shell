@@ -15,9 +15,9 @@ char **tokenizer(char *str)
 	token = strtok(str, " \n");
 
 	/* duplicate string for tokenizing */
-	str1 = strdup(str);
+	/* str1 = strdup(str); */
 
-	/* count the number of strings passed */
+	/* count the number of tokens passed */
 	while (token)
 	{
 		token = strtok(NULL, " \n");
@@ -32,6 +32,7 @@ char **tokenizer(char *str)
 		exit(EXIT_FAILURE);
 	}
 
+	str1 = stdup(str);
 	token = strtok(str1, " \n");
 
 	while (token)
