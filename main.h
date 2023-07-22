@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stddef.h>
+#include <string.h>
 
 /*structures*/
 /**
