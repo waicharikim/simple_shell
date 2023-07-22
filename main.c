@@ -4,6 +4,8 @@ int main(int ac __attribute__((unused)), char *av[]__attribute__((unused)))
 {
   char *lineptr = NULL;
   char *prompt = "$ ";
+  char **args;
+  int status;
 
   if (isatty(STDIN_FILENO) == 1) /*checks if the shell is in interactive mode*/
   {
@@ -13,8 +15,8 @@ int main(int ac __attribute__((unused)), char *av[]__attribute__((unused)))
 			  exit(EXIT_FAILURE);
 
 		lineptr =  get_line();
-		char **tokenizer(char *);
-
+		args = tokenizer(lineptr);
+		status = executor(args);
 		free(lineptr);
 	  }
   }
