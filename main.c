@@ -16,9 +16,11 @@ int main(int ac __attribute__((unused)), char *av[]__attribute__((unused)))
 
 		lineptr =  get_line();
 		args = tokenizer(lineptr);
+		i = 0;
 		while (args[i])
 		{
 			printf("%s\n", args[i]);
+			free(args[i]);
 			i++;
 		}
 		/* status = executor(args); */
