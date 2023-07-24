@@ -17,7 +17,7 @@
  */
 typedef struct cmd_tab {
 	char *cmd;
-	int (*find_cmd)(char **)
+	int (*find_cmd)(char **);
 } cmd;
 
 

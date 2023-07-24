@@ -19,7 +19,7 @@ int executor(char **tokens)
 	for (i = 0; i < 5; i++)/*executes if input matches a builtin*/
 	{
 		if (builtin[i].cmd == *(tokens + 0))
-			return(bultin[i].find_cmd(tokens));
+			return (bultin[i].find_cmd(tokens));
 	}
 		return (process(tokens));
 }

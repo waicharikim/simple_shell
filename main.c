@@ -5,7 +5,7 @@ int main(int ac __attribute__((unused)), char *av[]__attribute__((unused)))
   char *lineptr = NULL;
   char *prompt = "$ ";
   char **args;
-  int status;
+  int i;
 
   if (isatty(STDIN_FILENO) == 1) /*checks if the shell is in interactive mode*/
   {
@@ -16,8 +16,16 @@ int main(int ac __attribute__((unused)), char *av[]__attribute__((unused)))
 
 		lineptr =  get_line();
 		args = tokenizer(lineptr);
-		status = executor(args);
+		i = 0;
+		while (args[i])
+		{
+			printf("%s\n", args[i]);
+			free(args[i]);
+			i++;
+		}
+		/* status = executor(args); */
 		free(lineptr);
+		free(args);
 	  }
   }
 
