@@ -35,7 +35,7 @@ char *ispath(char *command)
 	token = strtok(envp, ":");
 	while (token)
 	{
-		tokens[i] = token;
+		tokens[i] = strdup(token);
 		token =	strtok(envp, ":");
 		i++;
 	}
@@ -44,6 +44,12 @@ char *ispath(char *command)
 
 	cmd_len = strlen(command);
 
+	i = 0;
+	while (tokens[i])
+	{
+		free(tokens[i]);
+		i++;
+	}
 	i = 0;
 	while (tokens[i])
 	{
