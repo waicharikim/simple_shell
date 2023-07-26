@@ -39,7 +39,7 @@ char *ispath(char *command)
 	tokens[i] = NULL;
 	free envp;
 
-	int cmd_len = strlen(command);
+	cmd_len = strlen(command);
 
 	i = 0;
 	while (tokens[i])
