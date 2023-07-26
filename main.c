@@ -6,6 +6,7 @@ int main(int ac __attribute__((unused)), char *av[]__attribute__((unused)))
   char *prompt = "$ ";
   char **args;
   int i;
+  char *alias;
 
   if (isatty(STDIN_FILENO) == 1) /*checks if the shell is in interactive mode*/
   {
@@ -16,6 +17,12 @@ int main(int ac __attribute__((unused)), char *av[]__attribute__((unused)))
 
 		lineptr =  get_line();
 		args = tokenizer(lineptr);
+
+		alias = isalias(args[0]);
+		if (alias)
+			isbuiltin(alias);
+		isbultin(args[0]);
+
 		i = 0;
 		while (args[i])
 		{
@@ -30,5 +37,6 @@ int main(int ac __attribute__((unused)), char *av[]__attribute__((unused)))
   }
 
   /*free(lineptr);*/
-	  return (0);
+	  return (-1);
 }
+
