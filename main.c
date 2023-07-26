@@ -19,6 +19,7 @@ int main(int ac __attribute__((unused)), char *av[]__attribute__((unused)))
 		args = tokenizer(lineptr);
 
 		alias = isalias(args[0]);
+
 		if (alias)
 			isbuiltin(alias);
 		isbultin(args[0]);
