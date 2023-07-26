@@ -9,12 +9,15 @@
  */
 int exec_utor(char **argv)
 {
+	char *cmd = NULL;
 	pid_t child = fork();
 	int status;
 
+	cmd = ispath(argv[0]);
+
 	if (!child)
 	{
-		if (execve(argv[0], argv, NULL) == -1)
+		if (execve(cmd, argv, NULL) == -1)
 		{
 			perror("Error");
 			exit(EXIT_FAILURE);

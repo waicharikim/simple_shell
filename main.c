@@ -1,5 +1,4 @@
 #include "main.h"
-
 int main(int ac, char *av[], char **env);
 /**
  * main - program entry point
@@ -15,10 +14,9 @@ int main(int ac, char *av[], char **env)
 	char *lineptr = NULL;
 	char *prompt = "$ ";
 	char **args;
-	int i;
+	int i, status;
 	char *alias, *cmd_path;
 
-	(void)cmd_path;
 	(void)ac;
 	(void)av;
 	(void)env;
@@ -45,10 +43,10 @@ int main(int ac, char *av[], char **env)
 			if (status == 0)
 				continue;
 			cmd_path = ispath(args[0]);
-
+			printf("%s\n", cmd_path);
 			if (cmd_path)
 			{
-				if (exec_utor(args, cmd_path) == 0)
+				if (exec_utor(args) == 0)
 					continue;
 				else
 				{
@@ -58,7 +56,7 @@ int main(int ac, char *av[], char **env)
 			}
 			else
 				perror("Error: ");
-
+	
 			i = 0;
 			while (args[i])
 			{

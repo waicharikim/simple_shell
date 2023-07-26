@@ -67,14 +67,11 @@ char *ispath(char *command)
 
 		if (stat(cmd_path, &buffer) == 0)
 		{
-			free(tokens);
 			return (cmd_path);
 		}
 		else
 			free(cmd_path);
 		i++;
 	}
-	free(tokens);
 	return (NULL);
 }
-
