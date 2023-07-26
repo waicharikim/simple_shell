@@ -6,7 +6,7 @@ int main(int ac __attribute__((unused)), char *av[]__attribute__((unused)))
   char *prompt = "$ ";
   char **args;
   int i;
-  char *alias;
+  char *alias, cmd_path;
 
   if (isatty(STDIN_FILENO) == 1) /*checks if the shell is in interactive mode*/
   {
@@ -20,13 +20,22 @@ int main(int ac __attribute__((unused)), char *av[]__attribute__((unused)))
 
 		alias = isalias(args[0]);
 		if (alias)
+		{
 			isbuiltin(alias);
-		isbultin(args[0]);
-
+			continue;
+		}
+		if (isbultin(args[0]) == -1)
+			cmd_path = ispath(args[0]);
+		if (cmd_path)
+		{
+			execve(
+		}
+		else
+			perror
 		i = 0;
 		while (args[i])
 		{
-			printf("%s\n", args[i]);
+			printf(-"%s\n", args[i]);
 			free(args[i]);
 			i++;
 		}
