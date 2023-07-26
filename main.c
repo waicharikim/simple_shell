@@ -17,7 +17,7 @@ int main(int ac, char *av[], char **env)
 	char **args;
 	int i;
 	char *alias, *cmd_path;
-
+	(void)cmd_path;
 	(void)ac;
 	(void)av;
 	(void)env;
@@ -33,19 +33,24 @@ int main(int ac, char *av[], char **env)
 			lineptr =  get_line();
 			args = tokenizer(lineptr);
 			alias = isalias(args[0]);
-			/* exec_utor(args); */
+			exec_utor(args);
 
+			if (strcmp(args[0], "exit") == 0)
+			{
+				free(args);
+				run_exit(args);
+			}
 			if (alias)
 			{
 				isbuiltin(&alias);
-				continue;
+				break;
 			}
-			if (isbuiltin(&args[0]) == -1)
+			/*if (isbuiltin(&args[0]) == -1)
 				cmd_path = ispath(args[0]);
-
-			if (cmd_path)
+			printf("Our code got to this point");
+		       	 if (cmd_path)
 			{
-				if (exec_utor(args, cmd_path) == 0)
+				if (exec_utor(args) == 0)
 					continue;
 				else
 				{
@@ -54,7 +59,7 @@ int main(int ac, char *av[], char **env)
 				}
 			}
 			else
-				perror("Error: ");
+				perror("Error: "); */
 
 			i = 0;
 			while (args[i])

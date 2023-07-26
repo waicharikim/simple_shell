@@ -18,8 +18,10 @@ char *ispath(char *command)
 
 	count = 0;
 	env = getenv("PATH");
+	printf("%s\n", env);
 	envp = strdup(env); /* duplicate PATH value*/
 	token = strtok(env, ":");
+	printf("%s\n", env);
 	while (token) /* count the number of tokens*/
 	{
 		token = strtok(NULL, ":");
@@ -41,15 +43,16 @@ char *ispath(char *command)
 	}
 	tokens[i] = NULL;
 	free(envp);
+	printf("%s\n", token);
 
 	cmd_len = strlen(command);
 
-	i = 0;
+	/* i = 0;
 	while (tokens[i])
 	{
 		free(tokens[i]);
 		i++;
-	}
+	} */
 	i = 0;
 	while (tokens[i])
 	{
@@ -74,6 +77,7 @@ char *ispath(char *command)
 			free(cmd_path);
 		i++;
 	}
+	printf("%s\n", cmd_path);
 	free(tokens);
 	return (NULL);
 }
