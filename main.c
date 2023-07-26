@@ -17,9 +17,10 @@ int main(int ac, char *av[], char **env)
 	char **args;
 	int i;
 	char *alias, *cmd_path;
-	void ac;
-	void(av);
-	void(env);
+
+	(void)ac;
+	(void)av;
+	(void)env;
 
 	if (isatty(STDIN_FILENO) == 1) /*checks if the shell is in interactive mode*/
 	{
@@ -36,24 +37,29 @@ int main(int ac, char *av[], char **env)
 
 			if (alias)
 			{
-				isbuiltin(alias);
+				isbuiltin(&alias);
 				continue;
 			}
-			if (isbultin(args[0]) == -1)
+			if (isbuiltin(&args[0]) == -1)
 				cmd_path = ispath(args[0]);
 
-			/* if (cmd_path)
+			if (cmd_path)
 			{
-				execve();
+				if (exec_utor(args, cmd_path) == 0)
+					continue;
+				else
+				{
+					perror("Error: forking failed");
+					continue;
+				}
 			}
 			else
-				perror(); */
+				perror("Error: ");
 
 			i = 0;
 			while (args[i])
 			{
 				/* printf("%s\n", args[i]); */
-				exec_utor(args);
 				free(args[i]);
 				i++;
 			}
@@ -64,5 +70,4 @@ int main(int ac, char *av[], char **env)
 		return (-1);
 	}
 	return (0);
->>>>>>> operate
 }

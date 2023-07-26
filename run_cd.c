@@ -2,7 +2,7 @@
 
 /**
  * run_cd - changes working directory
- * args: target directory
+ * @args: target directory
  *
  * Return: 0 for Success -1 for failure
  */
@@ -19,7 +19,7 @@ int run_cd(char **args)
 	else
 	{
 		if (chdir(args[1]) != 0)
-		    fprintf(stderr, "%s: not found\n", args[1]);
+			fprintf(stderr, "%s: not found\n", args[1]);
 		return (-1);
 	}
 	return (0);
