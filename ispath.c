@@ -1,5 +1,8 @@
 #include "main.h"
+#include <sys/stat.h>
+
 char *ispath(char *command);
+
 /**
  * ispath - find the PATH to a command
  * @command: command to search PATH
@@ -9,7 +12,7 @@ char *ispath(char *command);
 char *ispath(char *command)
 {
 	int count, cmd_len, i, tok_len;
-	char *env, envp, token, cmd_path;
+	char *env, *envp, *token, *cmd_path;
 	char **tokens;
 	struct stat buffer;
 
@@ -37,7 +40,7 @@ char *ispath(char *command)
 		i++;
 	}
 	tokens[i] = NULL;
-	free envp;
+	free(envp);
 
 	cmd_len = strlen(command);
 
@@ -51,7 +54,7 @@ char *ispath(char *command)
 			fprintf(stderr, "memory allocation failed");
 			exit(EXIT_FAILURE);
 		}
-		strcpy(cmd_path, tokens);
+		strcpy(cmd_path, token);
 		strcat(cmd_path, "/");
 		strcat(cmd_path, command);
 		strcat(cmd_path, "\0");
@@ -63,7 +66,9 @@ char *ispath(char *command)
 		}
 		else
 			free(cmd_path);
-			i++;
+		i++;
 	}
+	free(tokens);
 	return (NULL);
 }
+

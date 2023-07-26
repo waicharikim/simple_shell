@@ -8,10 +8,11 @@
  */
 char *isalias(char *command)
 {
+	int i = 0;
 	alias alias_list[1] = {
 		{"ls", "ls --color=auto"}};
 	
-	for (i = 0; i < 1; i++)
+	for (; i < 1; i++)
 	{
 		if (strcmp(command, alias_list[i].alias_name) == 0)
 			return (alias_list[i].cmd_name);
