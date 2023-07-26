@@ -20,10 +20,15 @@ typedef struct cmd_tab {
 	int (*find_cmd)(char **);
 } cmd;
 
+typedef struct alias_tab {
+	char *alias_name;
+	char *cmd_name;
+} alias;
 
 /*function prototypes*/
 char *get_line(void);
 char **tokenizer(char *);
+char *isalias(char *);
 int executor(char **);
 int process(char **);
 int run_cd(char **);
