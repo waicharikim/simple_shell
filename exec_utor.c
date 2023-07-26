@@ -7,16 +7,16 @@
  *
  * Return: 0 on success
  */
-int exec_utor(char **argv, char *cmd_path)
+int exec_utor(char **argv)
 {
 	pid_t child = fork();
 	int status;
 
 	if (!child)
 	{
-		if (execve(cmd_path, argv, NULL) == -1)
+		if (execve(argv[0], argv, NULL) == -1)
 		{
-			perror("Error:");
+			perror("Error");
 			exit(EXIT_FAILURE);
 		}
 	}
