@@ -31,7 +31,7 @@ char **tokenizer(char *);
 char *isalias(char *);
 int executor(char **);
 int process(char **);
-int rune_cd(char **);
+int run_cd(char **);
 int run_ls(char **);
 int run_pwd(char **);
 int run_exit(char **);

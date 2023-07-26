@@ -23,7 +23,7 @@ char **tokenizer(char *str)
 		token = strtok(NULL, " \n");
 		count++;
 	}
-	printf("%d\n", count);
+	/* printf("%d\n", count); */
 
 	/* allocate memory for the counted number of tokens and a null pointer */
 	strptr = malloc(sizeof(char *) * (count + 1));
