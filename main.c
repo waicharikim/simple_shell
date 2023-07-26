@@ -19,7 +19,7 @@ int main(int ac __attribute__((unused)), char *av[]__attribute__((unused)))
 		i = 0;
 		while (args[i])
 		{
-			printf("%s\n", args[i]);
+			/* printf("%s\n", args[i]); */
 			free(args[i]);
 			i++;
 		}
