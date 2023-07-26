@@ -13,14 +13,20 @@ int run_cd(char **args)
 	if (args[1] == NULL)
 	{
 		env = getenv("HOME");
-		chdir(env);
+		if (chdir(env) != 0)
+		{
+			perror("cd failed");
+			return (-1);
+		}
 		return (0);
 	}
 	else
 	{
 		if (chdir(args[1]) != 0)
+		{
 			fprintf(stderr, "%s: not found\n", args[1]);
-		return (-1);
+			return (-1);
+		}
 	}
 	return (0);
 }

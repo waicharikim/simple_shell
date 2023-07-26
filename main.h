@@ -28,7 +28,7 @@ typedef struct alias_tab {
 /*function prototypes*/
 char *get_line(void);
 char **tokenizer(char *);
-int isbuiltin(char **);
+int isbuiltin(char *, char **);
 char *ispath(char *);
 char *isalias(char *);
 int exec_utor(char **, char *);

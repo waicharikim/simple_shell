@@ -7,8 +7,9 @@
  * Return: 0 for success -1 for fail.
  */
 
-int isbuiltin(char **tokens)
+int isbuiltin(char *cmd_name, char **tokens)
 {
+	int (*find_cmd)(char **);
 	int i;
 	int status;
 	cmd builtin[4] = {
@@ -19,11 +20,15 @@ int isbuiltin(char **tokens)
 
 	for (i = 0; i < 4; i++)/*executes if input matches a builtin*/
 	{
-		if (builtin[i].cmd == *(tokens + 0))
+		if (*(builtin[i].cmd) == *cmd_name)
 		{
-			status = builtin[i].find_cmd(tokens);
+			find_cmd = builtin[i].find_cmd;
+			status = find_cmd(tokens);
 			if (status == 0)
+			{
+				free (tokens);
 				return (0);
+			}
 		}
 	}
 		return (-1);

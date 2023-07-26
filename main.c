@@ -18,6 +18,7 @@ int main(int ac, char *av[], char **env)
 	int i;
 	char *alias, *cmd_path;
 
+	(void)cmd_path;
 	(void)ac;
 	(void)av;
 	(void)env;
@@ -33,15 +34,17 @@ int main(int ac, char *av[], char **env)
 			lineptr =  get_line();
 			args = tokenizer(lineptr);
 			alias = isalias(args[0]);
-			/* exec_utor(args); */
 
 			if (alias)
 			{
-				isbuiltin(&alias);
-				continue;
+				status = isbuiltin(alias, args);
+				if (status == 0)
+					continue;
 			}
-			if (isbuiltin(&args[0]) == -1)
-				cmd_path = ispath(args[0]);
+			status = isbuiltin(args[0], args);
+			if (status == 0)
+				continue;
+			cmd_path = ispath(args[0]);
 
 			if (cmd_path)
 			{
