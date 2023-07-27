@@ -15,13 +15,20 @@
  * @cmd: command name
  * @find_cmd: pointer to a function
  */
-typedef struct cmd_tab {
+typedef struct cmd_tab
+{
 	char *cmd;
 	int (*find_cmd)(char **);
 } cmd;
 
-typedef struct alias_tab {
-	char *alias_name;
+/**
+ * struct a_tab - alias table
+ * @a_name: name of alias
+ * @cmd_name: command name
+ */
+typedef struct a_tab
+{
+	char *a_name;
 	char *cmd_name;
 } alias;
 
