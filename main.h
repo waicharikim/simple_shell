@@ -17,17 +17,24 @@
  */
 typedef struct cmd_tab {
 	char *cmd;
-	int (*find_cmd)(char **)
+	int (*find_cmd)(char **);
 } cmd;
 
+typedef struct alias_tab {
+	char *alias_name;
+	char *cmd_name;
+} alias;
 
 /*function prototypes*/
 char *get_line(void);
 char **tokenizer(char *);
-int executor(char **);
-int process(char **);
-int rune_cd(char **);
+int isbuiltin(char **);
+char *ispath(char *);
+char *isalias(char *);
+int exec_utor(char **);
+int run_cd(char **);
 int run_ls(char **);
 int run_pwd(char **);
 int run_exit(char **);
+int run_help(char **);
 #endif

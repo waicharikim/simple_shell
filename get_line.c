@@ -25,8 +25,7 @@ char *get_line(void)
 			exit(EXIT_FAILURE);
 		}
 	}
-	printf("The value of buffer is: %li\n", gLine);
-	printf("The size of buffer is: %li\n", buf);
-	printf("%s", lineptr);
+	if (lineptr[gLine - 1] == '\n')
+		lineptr[gLine - 1] = '\0';
 	return (lineptr);
 }
