@@ -23,7 +23,7 @@ int exec_utor(char **argv)
 		}
 	}
 	else if (child > 0)
-		wait(&status)
+		wait(&status);
 	else
 		return (-1);
 

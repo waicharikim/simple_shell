@@ -14,7 +14,7 @@ char *isalias(char *command)
 
 	for (; i < 1; i++)
 	{
-		if (strcmp(command, alias_list[i].alias_name) == 0)
+		if (strcmp(command, alias_list[i].a_name) == 0)
 			return (alias_list[i].cmd_name);
 		return (NULL);
 	}
