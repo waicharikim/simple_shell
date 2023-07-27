@@ -12,5 +12,6 @@ int run_exit(char **strptr)
 
 	if (strptr[1] != NULL)
 		status = atoi(strptr[1]);
+	free(strptr);
 	exit(status);
 }

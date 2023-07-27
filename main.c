@@ -15,8 +15,9 @@ int main(int ac, char *av[], char **env)
 	char *prompt = "$ ";
 	char **args;
 	int i, status;
-	char *alias, *cmd_path;
+	char *alias;
 
+	(void)status;
 	(void)ac;
 	(void)av;
 	(void)env;
@@ -31,32 +32,15 @@ int main(int ac, char *av[], char **env)
 
 			lineptr =  get_line();
 			args = tokenizer(lineptr);
-			alias = isalias(args[0]);
-
-			if (strcmp(args[0], "exit") == 0)
-			{
-				free(args);
-				run_exit(args);
-			}
-			if (alias)
-			{
-				status = isbuiltin(alias, args);
-				if (status == 0)
-					continue;
-			}
-			status = isbuiltin(args[0], args);
-			if (status == 0)
+			alias = isalias(args);
+			if  (!alias)
 				continue;
-			cmd_path = ispath(args[0]);
-
-			if (cmd_path)
-			{
-				exec_utor(args);
-
-			}
 			else
+			{
+				exec_utor(alias, args);
+			}
+			exec_utor(args[0], args);
 
-				perror("Error: ");
 			i = 0;
 			while (args[i])
 			{

@@ -67,6 +67,8 @@ char *ispath(char *command)
 			free(cmd_path);
 		i++;
 	}
-	free(tokens);
+	for (i = 0; tokens[i]; i++)
+		free(tokens[i]);
+	free (token);
 	return (NULL);
 }

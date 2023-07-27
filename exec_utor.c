@@ -6,14 +6,14 @@
  *
  * Return: 0 on success
  */
-int exec_utor(char **argv)
+int exec_utor(char *cmd_name, char **argv)
 {
 	char *cmd = NULL;
-	pid_t child = fork();
 	int status;
+	pid_t child = fork();
 
-	cmd = ispath(argv[0]);
-
+	cmd = ispath(cmd_name);
+	printf("%s\n", cmd);
 	if (!child)
 	{
 		if (execve(cmd, argv, NULL) == -1)
@@ -23,7 +23,7 @@ int exec_utor(char **argv)
 		}
 	}
 	else if (child > 0)
-		wait(&status)
+		wait(&status);
 	else
 		return (-1);
 
