@@ -6,15 +6,15 @@
  *
  * Return: 0 on success
  */
-int exec_utor(char *cmd_name, char **argv)
+int exec_utor(char **argv)
 {
 	char *cmd = NULL;
 	int status;
 	pid_t child = fork();
 
-	cmd = ispath(cmd_name);
-	printf("%s\n", cmd);
-	if (!child)
+	cmd = ispath(argv[0]);
+
+	if (child == 0)
 	{
 		if (execve(cmd, argv, NULL) == -1)
 		{
@@ -23,9 +23,13 @@ int exec_utor(char *cmd_name, char **argv)
 		}
 	}
 	else if (child > 0)
-		wait(&status);
+	{
+		do {
+			waitpid(child, &status, WUNTRACED);
+		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+	}
 	else
-		return (-1);
+	       exit (EXIT_FAILURE);
 
 	return (0);
 }
