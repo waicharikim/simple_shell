@@ -37,9 +37,10 @@ int main(int ac, char *av[], char **env)
 				continue;
 			else
 			{
-				exec_utor(alias, args);
+				printf("%s\n", alias);
+				exec_utor(args);
 			}
-			exec_utor(args[0], args);
+			exec_utor(args);
 
 			i = 0;
 			while (args[i])

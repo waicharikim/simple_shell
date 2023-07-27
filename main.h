@@ -31,7 +31,7 @@ char **tokenizer(char *);
 int isbuiltin(char *, char **);
 char *ispath(char *);
 char *isalias(char **);
-int exec_utor(char *, char **);
+int exec_utor(char **);
 int run_cd(char **);
 int run_ls(char **);
 int run_pwd(char **);
