@@ -52,12 +52,11 @@ int main(int ac, char *av[], char **env)
 			if (cmd_path)
 			{
 				exec_utor(args);
-				
+
 			}
 			else
 
 				perror("Error: ");
-
 			i = 0;
 			while (args[i])
 			{

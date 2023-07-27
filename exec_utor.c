@@ -3,7 +3,6 @@
 /**
  * exec_utor - function executes commands
  * @argv: an array of pointers
- * @cmd_path: pathname
  *
  * Return: 0 on success
  */
@@ -23,11 +22,10 @@ int exec_utor(char **argv)
 			exit(EXIT_FAILURE);
 		}
 	}
-	else if (child == -1)
-		return (-1);
-
+	else if (child > 0)
+		wait(&status)
 	else
-		wait(&status);
+		return (-1);
 
 	return (0);
 }

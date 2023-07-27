@@ -44,12 +44,6 @@ char *ispath(char *command)
 
 	cmd_len = strlen(command);
 
-	/* i = 0;
-	while (tokens[i])
-	{
-		free(tokens[i]);
-		i++;
-	} */
 	i = 0;
 	while (tokens[i])
 	{
@@ -73,5 +67,6 @@ char *ispath(char *command)
 			free(cmd_path);
 		i++;
 	}
+	free(tokens);
 	return (NULL);
 }
