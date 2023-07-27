@@ -33,6 +33,11 @@ int main(int ac, char *av[], char **env)
 			args = tokenizer(lineptr);
 			alias = isalias(args[0]);
 
+			if (strcmp(args[0], "exit") == 0)
+			{
+				free(args);
+				run_exit(args);
+			}
 			if (alias)
 			{
 				status = isbuiltin(alias, args);
@@ -43,20 +48,16 @@ int main(int ac, char *av[], char **env)
 			if (status == 0)
 				continue;
 			cmd_path = ispath(args[0]);
-			printf("%s\n", cmd_path);
+
 			if (cmd_path)
 			{
-				if (exec_utor(args) == 0)
-					continue;
-				else
-				{
-					perror("Error: forking failed");
-					continue;
-				}
+				exec_utor(args);
+				
 			}
 			else
+
 				perror("Error: ");
-	
+
 			i = 0;
 			while (args[i])
 			{

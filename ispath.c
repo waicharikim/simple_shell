@@ -36,7 +36,7 @@ char *ispath(char *command)
 	while (token)
 	{
 		tokens[i] = strdup(token);
-		token =	strtok(envp, ":");
+		token =	strtok(NULL, ":");
 		i++;
 	}
 	tokens[i] = NULL;
@@ -44,12 +44,12 @@ char *ispath(char *command)
 
 	cmd_len = strlen(command);
 
-	i = 0;
+	/* i = 0;
 	while (tokens[i])
 	{
 		free(tokens[i]);
 		i++;
-	}
+	} */
 	i = 0;
 	while (tokens[i])
 	{
@@ -60,7 +60,7 @@ char *ispath(char *command)
 			fprintf(stderr, "memory allocation failed");
 			exit(EXIT_FAILURE);
 		}
-		strcpy(cmd_path, token);
+		strcpy(cmd_path, tokens[i]);
 		strcat(cmd_path, "/");
 		strcat(cmd_path, command);
 		strcat(cmd_path, "\0");
