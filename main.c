@@ -43,23 +43,8 @@ int main(int ac, char *av[], char **env)
 			if (alias)
 			{
 				isbuiltin(&alias);
-				break;
+				continue;
 			}
-			/*if (isbuiltin(&args[0]) == -1)
-				cmd_path = ispath(args[0]);
-			printf("Our code got to this point");
-		       	 if (cmd_path)
-			{
-				if (exec_utor(args) == 0)
-					continue;
-				else
-				{
-					perror("Error: forking failed");
-					continue;
-				}
-			}
-			else
-				perror("Error: "); */
 
 			i = 0;
 			while (args[i])
