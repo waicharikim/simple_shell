@@ -26,5 +26,5 @@ int run_exit(char **strptr)
 		exit(status);
 	}
 	else
-		exit(EXIT_SUCCESS);
+		exit(0);
 }
