@@ -36,9 +36,21 @@ typedef struct a_tab
 char *get_line(void);
 char **tokenizer(char *);
 int isbuiltin(char **);
-char *ispath(char *);
+char *ispath(char *, char **);
 char *isalias(char *);
-int exec_utor(char **);
+int exec_utor(char **, char **, int);
+char *get_path(char **env);
+
+/*custom made fuctions*/
+int str_len(char *);
+int str_ncmp(char *, char *, int);
+char *str_cat(char *, char *);
+int str_cmp(char *, char *);
+char *str_cpy(char *, char *);
+char *str_dup(char *);
+void free_argv(char **);
+
+/* commands prototypes */
 int run_cd(char **);
 int run_ls(char **);
 int run_pwd(char **);

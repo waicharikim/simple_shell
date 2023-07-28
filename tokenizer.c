@@ -13,7 +13,7 @@ char **tokenizer(char *str)
 	char **strptr;
 
 	/* duplicate string for tokenizing */
-	str1 = strdup(str);
+	str1 = str_dup(str);
 
 	token = strtok(str, " \n");
 
@@ -29,7 +29,6 @@ char **tokenizer(char *str)
 	strptr = malloc(sizeof(char *) * (count + 1));
 	if (!strptr)
 	{
-		fprintf(stderr, "memory allocation failed");
 		exit(EXIT_FAILURE);
 	}
 	token = strtok(str1, " \n");
@@ -37,7 +36,7 @@ char **tokenizer(char *str)
 	while (token)
 	{
 		/* store the duplicate token at the ith index */
-		strptr[i] = strdup(token);
+		strptr[i] = str_dup(token);
 		token = strtok(NULL, " \n");
 		i++;
 	}

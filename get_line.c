@@ -13,19 +13,8 @@ char *get_line(void)
 	gLine = getline(&lineptr, &buf, stdin);
 	if (gLine == -1)/* checks if getline fails == exiting the shell*/
 	{
-		if (feof(stdin))
-		{
-			free(lineptr);
-			exit(EXIT_SUCCESS);
-		}
-		else
-		{
-			free(lineptr);
-			fprintf(stderr, "Error: Failed to read from stdin");
-			exit(EXIT_FAILURE);
-		}
+		free(lineptr);
+		exit(EXIT_SUCCESS);
 	}
-	if (lineptr[gLine - 1] == '\n')
-		lineptr[gLine - 1] = '\0';
 	return (lineptr);
 }
