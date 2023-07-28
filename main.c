@@ -15,7 +15,7 @@ int main(int ac, char *av[], char **env)
 	char *lineptr = NULL;
 	char *prompt = "$ ";
 	char **args;
-	int i, set = 0;
+	int i, status, set = 0;
 	char *cmd_path;
 	(void)cmd_path;
 	(void)ac;
@@ -54,7 +54,14 @@ int main(int ac, char *av[], char **env)
 		}
 		if (str_cmp(args[0], "exit") == 0)
 		{
-			run_exit(args);
+			status = run_exit(args);
+			if (status == -1)
+				exit(0);
+			if (status != 0 && status != -1)
+				exit(status);
+			else
+				exit(2);
+
 		}
 
 		exec_utor(args, env, set);

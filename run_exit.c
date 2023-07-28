@@ -14,16 +14,16 @@ int run_exit(char **strptr)
 	{
 		len = str_len(strptr[1]);
 		status = atoi(strptr[1]);
-		if (status < 0)
+		if (status == 0)
 		{
 			write(STDERR_FILENO, "./hsh: 1: exit: Illegal number: ", 32);
 			write(STDERR_FILENO, strptr[1], len);
 			write(STDERR_FILENO, "\n", 1);
 			free(strptr);
-			exit(2);
+			return (0);
 		}
 		free(strptr);
-		exit(status);
+		return (status);
 	}
-	exit(EXIT_SUCCESS);
+	return (-1);
 }
