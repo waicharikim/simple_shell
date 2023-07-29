@@ -63,6 +63,12 @@ int main(int ac, char *av[], char **env)
 				exit(2);
 
 		}
+		if (str_cmp(args[0], "env") == 0)
+		{
+			for (i = 0; env[i]; i++)
+				printf("%s\n", env[i]);
+			continue;
+		}
 
 		exec_utor(args, env, set);
 
