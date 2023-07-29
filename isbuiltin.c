@@ -11,7 +11,7 @@ int isbuiltin(char **tokens)
 {
 	int i;
 	int status;
-	cmd builtin[4] = {
+	cmd builtin[3] = {
 		{"cd", &run_cd},
 		{"pwd", &run_pwd},
 		/*{"exit", &run_exit},*/
@@ -24,7 +24,9 @@ int isbuiltin(char **tokens)
 			status = builtin[i].find_cmd(tokens);
 			if (status == 0)
 				return (0);
+			else
+				return (-1);
 		}
 	}
-		return (-1);
+	return (-1);
 }
