@@ -55,22 +55,14 @@ int main(int ac, char *av[], char **env)
 		if (str_cmp(args[0], "exit") == 0)
 		{
 			status = run_exit(args, lineptr);
-			if (status == -1)
-				exit(0);
-			if (status != 0 && status != -1)
-				exit(status);
-			else
+			if (status < 0)
 				exit(2);
+			else
+				exit(status);
 
 		}
-		/* if (str_cmp(args[0], "env") == 0)
-		{
-			for (i = 0; env[i]; i++)
-				printf("%s\n", env[i]);
-			continue;
-		} */
 
-		exec_utor(args, env, set);
+		exec_utor(args, env, lineptr, set);
 
 		i = 0;
 		while (args[i])

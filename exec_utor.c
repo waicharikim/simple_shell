@@ -1,15 +1,17 @@
 #include "main.h"
 #include <sys/wait.h>
 
+int exec_utor(char **argv, char **env, char *lineptr, int set);
 /**
  * exec_utor - function executes commands
  * @argv: an array of pointers
  * @env: environment variable
  * @set: an integer
+ * @lineptr: line pointer
  *
  * Return: 0 on success
  */
-int exec_utor(char **argv, char **env, int set)
+int exec_utor(char **argv, char **env, char *lineptr, int set)
 {
 	pid_t child;
 	char *cmd = NULL;
@@ -49,5 +51,11 @@ int exec_utor(char **argv, char **env, int set)
 		return (-1);
 
 	free(cmd);
-	return (WEXITSTATUS(status));
+	if (status == 512)
+	{
+		free_argv(argv);
+		free(lineptr);
+		exit(2);
+	}
+	return (2);
 }
