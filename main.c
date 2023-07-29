@@ -71,6 +71,24 @@ int main(int ac, char *av[], char **env)
 			free(args);
 			continue;
 		}
+		if (str_cmp(args[0], "cd") == 0)
+		{
+			if (args[1] == NULL)
+			{
+				chdir(getenv("HOME"));
+				free_argv(args);
+				continue;
+			}
+			else
+			{
+				if (chdir(args[1]) != 0)
+					fprintf(stderr, "%s: not found\n", args[1]);
+				free_argv(args);
+				continue;
+			}
+			free_argv(args);
+			continue;
+		}
 /*
 		status = isbuiltin(args);
 		if (status == 0)
