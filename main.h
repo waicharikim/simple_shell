@@ -49,6 +49,7 @@ int str_cmp(char *, char *);
 char *str_cpy(char *, char *);
 char *str_dup(char *);
 void free_argv(char **);
+int str_toi(char *);
 
 /* commands prototypes */
 int run_cd(char **);

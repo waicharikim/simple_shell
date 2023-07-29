@@ -14,7 +14,7 @@ int run_exit(char **strptr, char *lineptr)
 	if (strptr[1])
 	{
 		len = str_len(strptr[1]);
-		status = atoi(strptr[1]);
+		status = str_toi(strptr[1]);
 		if (status < 0)
 		{
 			write(STDERR_FILENO, "./hsh: 1: exit: Illegal number: ", 32);
