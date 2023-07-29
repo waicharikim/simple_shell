@@ -59,16 +59,28 @@ int main(int ac, char *av[], char **env)
 				exit(2);
 			else
 				exit(status);
-
 		}
-/*		status = isbuiltin(args);
-		if (status == 0)
+		if (str_cmp(args[0], "env") == 0)
 		{
-			free(lineptr);
+			for (i = 0; env[i]; i++)
+				;
+			i--;
+			for (; i >= 0; i--)
+				printf("%s\n", env[i]);
+
 			free(args);
 			continue;
 		}
-*/
+/*
+		status = isbuiltin(args);
+		if (status == 0)
+		{
+			free(lineptr);
+			free_argv(args);
+			continue;
+		}
+		*/
+
 		exec_utor(args, env, lineptr, set);
 
 		i = 0;
