@@ -61,13 +61,14 @@ int main(int ac, char *av[], char **env)
 				exit(status);
 
 		}
-		status = isbuiltin(args);
+/*		status = isbuiltin(args);
 		if (status == 0)
 		{
-			free(line_ptr);
+			free(lineptr);
 			free(args);
 			continue;
 		}
+*/
 		exec_utor(args, env, lineptr, set);
 
 		i = 0;
