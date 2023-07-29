@@ -26,5 +26,9 @@ int run_exit(char **strptr)
 		exit(status);
 	}
 	else
+	{
+		free_argv(strptr);
 		exit(0);
+	}
+	return (0);
 }

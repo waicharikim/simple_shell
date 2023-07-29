@@ -40,7 +40,7 @@ int exec_utor(char **argv, char **env, int set)
 		if (execve(cmd, argv, env) == -1)
 		{
 			perror("Error");
-			exit(EXIT_FAILURE);
+			exit(2);
 		}
 	}
 	else if (child > 0)
