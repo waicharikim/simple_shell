@@ -25,14 +25,10 @@ int run_exit(char **strptr)
 		free(strptr);
 		return (status);
 	}
-<<<<<<< HEAD
 	else
 	{
 		free_argv(strptr);
 		exit(0);
 	}
-	return (0);
-=======
-		return (-1);
->>>>>>> 9e4733294a588d918824e324bc4535cfa166e48e
+	return (-1);
 }
