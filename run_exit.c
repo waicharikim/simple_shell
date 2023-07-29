@@ -6,7 +6,7 @@
  *
  * Return: 0 0n success
  */
-int run_exit(char **strptr)
+int run_exit(char **strptr, char *lineptr)
 {
 	int status, len;
 
@@ -19,15 +19,15 @@ int run_exit(char **strptr)
 			write(STDERR_FILENO, "./hsh: 1: exit: Illegal number: ", 32);
 			write(STDERR_FILENO, strptr[1], len);
 			write(STDERR_FILENO, "\n", 1);
-			free(strptr);
-			return (0);
 		}
-		free(strptr);
+		free_argv(strptr);
+		free(lineptr);
 		return (status);
 	}
 	else
 	{
 		free_argv(strptr);
+		free(lineptr);
 		exit(0);
 	}
 	return (-1);

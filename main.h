@@ -54,6 +54,6 @@ void free_argv(char **);
 int run_cd(char **);
 int run_ls(char **);
 int run_pwd(char **);
-int run_exit(char **);
+int run_exit(char **, char *);
 int run_help(char **);
 #endif

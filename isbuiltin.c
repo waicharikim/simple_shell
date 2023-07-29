@@ -14,7 +14,7 @@ int isbuiltin(char **tokens)
 	cmd builtin[4] = {
 		{"cd", &run_cd},
 		{"pwd", &run_pwd},
-		{"exit", &run_exit},
+		/*{"exit", &run_exit},*/
 		{"help", &run_help}};
 
 	for (i = 0; i < 4; i++)/*executes if input matches a builtin*/
