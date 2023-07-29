@@ -68,7 +68,8 @@ int main(int ac, char *av[], char **env)
 			for (; i >= 0; i--)
 				printf("%s\n", env[i]);
 
-			free(args);
+			free(lineptr);
+			free_argv(args);
 			continue;
 		}
 		if (str_cmp(args[0], "cd") == 0)
