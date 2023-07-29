@@ -25,5 +25,5 @@ int run_exit(char **strptr)
 		free(strptr);
 		return (status);
 	}
-	return (-1);
+		return (-1);
 }
