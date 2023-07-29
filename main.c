@@ -77,6 +77,7 @@ int main(int ac, char *av[], char **env)
 			{
 				chdir(getenv("HOME"));
 				free_argv(args);
+				free(lineptr);
 				continue;
 			}
 			else
@@ -84,6 +85,7 @@ int main(int ac, char *av[], char **env)
 				if (chdir(args[1]) != 0)
 					fprintf(stderr, "%s: not found\n", args[1]);
 				free_argv(args);
+				free(lineptr);
 				continue;
 			}
 			free_argv(args);

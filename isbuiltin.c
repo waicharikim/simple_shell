@@ -12,7 +12,7 @@ int isbuiltin(char **tokens)
 	int i;
 	int status;
 	cmd builtin[3] = {
-		{"cd", &run_cd},
+		/*{"cd", &run_cd},*/
 		{"pwd", &run_pwd},
 		{"help", &run_help}};
 

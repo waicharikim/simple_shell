@@ -52,7 +52,7 @@ void free_argv(char **);
 int str_toi(char *);
 
 /* commands prototypes */
-int run_cd(char **);
+void run_cd(char **, char **);
 int run_ls(char **);
 int run_pwd(char **);
 int run_exit(char **, char *);
